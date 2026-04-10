@@ -1,11 +1,11 @@
 
 
 
-def adder(a, b):
+def multiplier(a, b):
     if a < 0 or b < 0:
-        raise ValueError("adder only supports non-negative integers")
+        raise ValueError("multiplier only supports non-negative integers")
 
-    while b != 0:
+    while b != 0 
         carry = a & b
         a = a ^ b
         b = carry << 1
