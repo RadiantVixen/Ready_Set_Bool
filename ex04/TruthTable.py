@@ -13,7 +13,7 @@ def  eval_formula(s)->bool:
                 print("the formula is invalid")
                 return False
             a = stack.pop()
-            stack.append(not a)
+            stack.append(int(not a))
         else:
             if len(stack) < 2:
                 print("the formula is invalid")
@@ -21,20 +21,20 @@ def  eval_formula(s)->bool:
             a = stack.pop()
             b = stack.pop()
             if c == '&':
-                stack.append(a & b)
+                stack.append(int(a & b))
             elif c == '|':
-                stack.append(a | b)
+                stack.append(int(a | b))
             elif c == '^':
-                stack.append(a ^ b)
+                stack.append(int(a ^ b))
             elif c == '>':
-                stack.append(not (b == 0  and a == 1))
+                stack.append(int(not (b == 0  and a == 1)))
             elif c == '=':
-                stack.append(a == b)
+                stack.append(int(a == b))
             else:
                 print("the formula is invalid")
                 return False
     
-    if len(stack) > 1:
+    if len(stack) != 1:
         print("the formula is invalid")
         return False
     return bool(stack[0])
@@ -44,11 +44,9 @@ def  eval_formula(s)->bool:
 def TruthTable(s):
     mapping = defaultdict(int)
     sl = list(s)
-    n = 0
     
     for i in range(len(s)):
         if s[i].isalpha():
-            n +=1
             mapping[s[i]] = 0
 
     tab = list(mapping.keys())
@@ -57,7 +55,6 @@ def TruthTable(s):
     print("|" + "---|" * (len(tab) + 1))
 
     def replace():
-        nonlocal s
         nonlocal sl
         nonlocal mapping
 
@@ -92,5 +89,5 @@ def TruthTable(s):
 
 
 if __name__ == "__main__":
-    print(TruthTable("AB&C|"))
+    TruthTable("AB&C|")
 
