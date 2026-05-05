@@ -5,7 +5,6 @@ def  eval_formula(s)->bool:
         return False
 
     stack = []
-
     for c in s:
         if c == '0' or c =='1':
             stack.append(int(c))
@@ -14,7 +13,7 @@ def  eval_formula(s)->bool:
                 print("the formula is invalid")
                 return False
             a = stack.pop()
-            stack.append(not a)
+            stack.append(int(not a))
         else:
             if len(stack) < 2:
                 print("the formula is invalid")
@@ -22,15 +21,15 @@ def  eval_formula(s)->bool:
             a = stack.pop()
             b = stack.pop()
             if c == '&':
-                stack.append(a & b)
+                stack.append(int(a & b))
             elif c == '|':
-                stack.append(a | b)
+                stack.append(int(a | b))
             elif c == '^':
-                stack.append(a ^ b)
+                stack.append(int(a ^ b))
             elif c == '>':
-                stack.append(not (b == 0  and a == 1))
+                stack.append(int(not (b == 0  and a == 1)))
             elif c == '=':
-                stack.append(a == b)
+                stack.append(int(a == b))
             else:
                 print("the formula is invalid")
                 return False
