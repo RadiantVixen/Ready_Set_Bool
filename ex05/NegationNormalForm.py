@@ -6,12 +6,18 @@ class node:
         self.right = right
 
 
-def print_infix(node):
+def print_tree(node, prefix="", is_left=True):
     if node is None:
-        return ""
-    if node.val == '!':
-        return f"![{print_infix(node.left)}]"
-    return f"[{print_infix(node.left)} {node.val} {print_infix(node.right)}]"
+        return
+
+    print(prefix + ("├── " if is_left else "└── ") + str(node.val))
+
+    if node.left or node.right:
+        if node.left:
+            print_tree(node.left, prefix + ("│   " if is_left else "    "), True)
+        if node.right:
+            print_tree(node.right, prefix + ("│   " if is_left else "    "), False)
+
 
 def expression_to_tree(exp) -> node:
     stack = []
@@ -27,7 +33,7 @@ def expression_to_tree(exp) -> node:
             b = stack.pop()
             stack.append(node(c, b, a))
 
-    print(print_infix(stack[0]))
+    # print(print_tree(stack[0]))
     return stack[0]
 
 
@@ -36,7 +42,7 @@ def simplify(tree) -> str:
         return None
     
     if tree.val == '>':
-        return simplify(node('|', simplify(node('!', (tree.left))), tree.right))
+        return node('|', simplify(node('!', (tree.left))), tree.right)
     
     if tree.val == '=':
         left = node('&', simplify(tree.left), simplify(tree.right))
@@ -49,17 +55,17 @@ def simplify(tree) -> str:
         return node('|', left, right)
 
     if tree.val == '!':
-        left = tree.left
-        if left.val == '!':
-            return simplify(left.left)
+        child = tree.left
+        if child.val == '!':
+            return simplify(child.left)
         
-        if left.val == '&':
-            return node('|', simplify(node('!', tree.left)), simplify(tree.right))
+        if child.val == '&':
+            return node('|', simplify(node('!', child.left)), simplify(node('!', child.right)))
 
-        if left.val == '|':
-            return node('&', simplify(node('!', left.left)), simplify(node('!', left.right)))
+        if child.val == '|':
+            return node('&', simplify(node('!', child.left)), simplify(node('!', child.right)))
         
-        return node('!', simplify(left))
+        return node('!', simplify(child))
 
     return node(tree.val, simplify(tree.left), simplify(tree.right))
 
@@ -80,3 +86,7 @@ def negation_normal_form(expr):
 
 if __name__ == "__main__":
     print("result = ", negation_normal_form("AB&!"))
+    print("result = ", negation_normal_form("AB|!"))
+    print("result = ", negation_normal_form("AB>"))
+    print("result = ", negation_normal_form("AB="))
+    print("result = ", negation_normal_form("AB|C&!"))
