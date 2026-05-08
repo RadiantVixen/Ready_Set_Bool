@@ -1,33 +1,30 @@
 
 
 def powerset(a) -> set:
-    ps = []
+    ps = [[]]
 
-    def rec(subset, curr):
-        if curr >= 2 ** len(a):
+    def rec(subset, i, curr):
+        if i >= len(a):
             return
+    
+        subset.append(a[i])
+        ps.append(subset.copy())
+        rec(subset, i + 1, curr)
 
-        for j in range(len(a)):
-            subset.append(a[j])
-            ps.append(subset.copy())
-            curr += 1
 
         subset.pop()
-        rec(subset.copy(), curr+1)
-        
-
-
+        rec(subset, i + 1, curr)
 
 
 
     subset = []
-    rec(subset, 0)
+    rec(subset, 0, 0)
     return ps
 
 
 
 
 if __name__  == "__main__":
-    print("result =", powerset([0,1]))
+    print("result =", powerset([0,1,2,3]))
 
 
