@@ -6,7 +6,7 @@ def powerset(a) -> set:
     def rec(subset, i, curr):
         if i >= len(a):
             return
-    
+
         subset.append(a[i])
         ps.append(subset.copy())
         rec(subset, i + 1, curr)
