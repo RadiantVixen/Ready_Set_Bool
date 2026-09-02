@@ -22,7 +22,7 @@ This repository features custom high-fidelity visualizations explaining the core
 ### 2. Standard Binary vs. Gray Code Transitions (ex02)
 *Why Gray Code is an engineering marvel. This visualization demonstrates the single-bit transition property of Gray Code compared to standard binary.*
 
-![Gray Code Comparison](https://github.com/RadiantVixen/assets/raw/main/gray-code-comparison.gif)
+![Gray Code Comparison](assets/gray-code-comparison.gif)
 
 *   **Standard Binary Glitches**: Moving from $7$ (`0111`) to $8$ (`1000`) forces **4 simultaneous bit flips**. In real-world physical systems (like optical rotary encoders), mechanical tolerances cause asynchronous reads, resulting in spurious intermediate states ("glitches").
 *   **Gray Code Safety**: In Gray Code, moving between any consecutive integers (including wrap-around) guarantees that **exactly 1 bit changes**. This eliminates physical glitches and ensures absolute sensor stability.
