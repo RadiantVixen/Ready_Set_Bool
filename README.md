@@ -11,7 +11,7 @@ This repository features custom high-fidelity visualizations explaining the core
 ### 1. Bitwise Full Adder Simulation (ex00)
 *Visualizing arithmetic addition synthesized purely from gate-level operations (AND, XOR, and bitwise Left Shifts), bypassing the arithmetic `+` operator.*
 
-![Bitwise Adder Simulation](https://lh3.googleusercontent.com/notebooklm/AKYWMX8GskvcIF-XB_7UFvN54_jEntkMtDArXAhCHcDZPt1ipaNkbO2SiN-vBDp2xp51FMN_wLNOgIFN4a4Rg4vS2v0SQDF8SRLEwxDbvv7IHv0lYRFS9G5UOphwCAUSBKEwjSuUitEAeDoLcQw5HUUe5HckbkmdNuA)
+![Bitwise Adder Simulation](assets/bitwise-adder-simulation.gif)
 
 *   **XOR Gate (`^`)**: Computes the sum of bits without carries.
 *   **AND Gate (`&`)**: Identifies position-wise carry generators.
@@ -22,7 +22,7 @@ This repository features custom high-fidelity visualizations explaining the core
 ### 2. Standard Binary vs. Gray Code Transitions (ex02)
 *Why Gray Code is an engineering marvel. This visualization demonstrates the single-bit transition property of Gray Code compared to standard binary.*
 
-![Gray Code Comparison](https://lh3.googleusercontent.com/notebooklm/AKYWMX-1eqv1D5DAZjhore2JG7wglR-8_WWZlRopXRTYoTUR69FJ8bFMFGe4k2pLfejz096x_cDNuzdFOsd0c2nQFXXEsWSttELFuoa2MVAKe82ui5wWKGmpxD6BGPS2y09TfYAP-aKXPZoIOmNDJwhISn5zUHt9zOQ)
+![Gray Code Comparison](https://github.com/RadiantVixen/assets/raw/main/gray-code-comparison.gif)
 
 *   **Standard Binary Glitches**: Moving from $7$ (`0111`) to $8$ (`1000`) forces **4 simultaneous bit flips**. In real-world physical systems (like optical rotary encoders), mechanical tolerances cause asynchronous reads, resulting in spurious intermediate states ("glitches").
 *   **Gray Code Safety**: In Gray Code, moving between any consecutive integers (including wrap-around) guarantees that **exactly 1 bit changes**. This eliminates physical glitches and ensures absolute sensor stability.
@@ -32,7 +32,7 @@ This repository features custom high-fidelity visualizations explaining the core
 ### 3. Bijective Coordinate Normalization Curve (ex10 & ex11)
 *Mapping a 2D integer coordinate grid $[0, 2^{16}-1]^2$ into a single-dimensional float interval $[0, 1]$ and reconstructively mapping it back with zero loss of dimensionality or bijection.*
 
-![Coordinate Mapping Curve](https://lh3.googleusercontent.com/notebooklm/AKYWMX-XiBDrYQ8ALE2VldAy4v6TJ4wuRDsDMI0SlfheDeZ5EjQGKvi4g8B9o59Ef44O-OME-ni9q02UhjE7fZWr91oV81YpMZDqIO7i0MEqbiOopdlKrZsbiJXnj7kzlohgUEmlwuPde6DwskHVQDBp_3yjhUAObVI)
+![Coordinate Mapping Curve](assets/coordinate-mapping-curve.gif)
 
 *   **Bitwise Concatenation**: Consolidates two 16-bit integers $X$ and $Y$ into a single 32-bit register by shifting $X$ left by 16 and applying a bitwise OR with $Y$.
 *   **Normalization**: Scales the 32-bit integer $n \in [0, 2^{32}-1]$ down to a float $f \in [0, 1]$ via division by $(2^{32} - 1)$.
